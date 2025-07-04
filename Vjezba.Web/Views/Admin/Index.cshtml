@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="admin-panel-container">
+    <div class="admin-card shadow-lg">
+        <h1 class="admin-title">⚙️ Admin Panel</h1>
+        <p class="welcome-message text-success">Welcome, administrator! </p>
+
+        <ul class="admin-links">
+            <li>
+                <a asp-controller="Client" asp-action="Index" class="btn-admin">👥 Manage Players</a>
+            </li>
+            <li>
+                <a asp-controller="Home" asp-action="Index" class="btn-admin-outline">🏠 Back to Home</a>
+            </li>
+        </ul>
+    </div>
+</div>

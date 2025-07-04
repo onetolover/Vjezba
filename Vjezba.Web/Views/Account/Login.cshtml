@@ -1,0 +1,56 @@
+﻿@model Vjezba.Web.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-light">
+    <div class="login-card shadow-lg p-4">
+        <div class="text-center mb-4">
+            <h2 class="text-purple fw-bold">@ViewData["Title"]</h2>
+            <p class="text-muted">Log in to support and follow Team Allice Volleyball 🏐</p>
+        </div>
+
+        <form asp-action="Login" method="post">
+            <div class="form-row">
+                <label asp-for="Email" class="form-label text-purple"></label>
+                <input asp-for="Email" class="form-input" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="form-error text-danger small"></span>
+            </div>
+
+            <div class="form-row">
+                <label asp-for="Password" class="form-label text-purple"></label>
+                <input asp-for="Password" type="password" class="form-input" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="form-error text-danger small"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="RememberMe" class="form-check-input" id="rememberMe" />
+                <label asp-for="RememberMe" class="form-check-label" for="rememberMe">
+                    Remember Me
+                </label>
+            </div>
+
+            <button type="submit" class="btn-purple w-100 mb-3">Login</button>
+
+            <div class="text-center mt-2">
+                <a class="btn btn-outline-danger w-100" href="/Account/ExternalLogin?provider=Google">
+                    <i class="fa fa-google me-2"></i> Login with Google
+                </a>
+            </div>
+
+            <div class="text-center mt-3">
+                <span class="text-muted">Não tem conta?</span>
+                <a asp-controller="Account" asp-action="Register" class="text-purple fw-semibold ms-1">Registre-se</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

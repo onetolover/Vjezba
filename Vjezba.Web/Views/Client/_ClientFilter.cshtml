@@ -1,0 +1,19 @@
+﻿@using Vjezba.Web.Models
+@model ClientFilterModel
+
+<form id="filterForm" asp-action="Filter" asp-controller="Client" method="get" class="filter-form">
+    <div class="filter-grid">
+        <input asp-for="FullName" class="filter-input" type="text" placeholder="Full Name" />
+        <input asp-for="Address" class="filter-input" type="text" placeholder="Address" />
+        <input asp-for="Email" class="filter-input" type="text" placeholder="Email" />
+        <input asp-for="City" class="filter-input" type="text" placeholder="City" />
+        <div class="filter-buttons">
+            <button type="submit" class="btn-modern-outline">Search</button> <br />
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Create" class="btn-modern">New</a>
+            }
+
+        </div>
+    </div>
+</form>

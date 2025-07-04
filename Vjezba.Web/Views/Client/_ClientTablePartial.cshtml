@@ -1,0 +1,33 @@
+﻿@model List<Client>
+
+<table class="modern-table">
+    <thead>
+        <tr>
+            <th>Player</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>City</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">@item.FullName</a>
+                </td>
+                <td>@item.Address</td>
+                <td>@item.Email</td>
+                <td>@item.City?.Name</td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ID">[edit]</a>
+                    }
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

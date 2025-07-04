@@ -1,0 +1,62 @@
+﻿@model Vjezba.Model.Client
+
+
+<div class="styled-form">
+    <div class="form-row">
+        <label class="form-label">First Name</label>
+        <input asp-for="FirstName" class="form-input" />
+        <span asp-validation-for="FirstName" class="form-error"></span>
+    </div>
+
+    <div class="form-row">
+        <label class="form-label">Last Name</label>
+        <input asp-for="LastName" class="form-input" />
+        <span asp-validation-for="LastName" class="form-error"></span>
+    </div>
+
+    <div class="form-row">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-input" />
+        <span asp-validation-for="Email" class="form-error"></span>
+    </div>
+
+    <div class="form-row">
+        <label class="form-label">Gender</label>
+        <input asp-for="Gender" class="form-input" />
+        <span asp-validation-for="Gender" class="form-error"></span>
+    </div>
+
+    <div class="form-row">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" asp-for="DateOfBirth" class="form-input" />
+        <span asp-validation-for="DateOfBirth" class="form-error"></span>
+    </div>
+
+    <div class="form-row">
+        <label class="form-label">Experience</label>
+        <input asp-for="WorkingExperience" class="form-input" />
+        <span asp-validation-for="WorkingExperience" class="form-error"></span>
+    </div>
+
+    <div class="form-row">
+        <label class="form-label">Address</label>
+        <input asp-for="Address" class="form-input" />
+        <span asp-validation-for="Address" class="form-error"></span>
+    </div>
+
+    <div class="form-row">
+        <label class="form-label">City</label>
+        <select asp-for="CityID" asp-items="ViewBag.PossibleCities" class="form-input"></select>
+        <span asp-validation-for="CityID" class="form-error"></span>
+    </div>
+
+    <div class="form-row">
+        <label class="form-label">Phone</label>
+        <input asp-for="PhoneNumber" class="form-input" />
+        <span asp-validation-for="PhoneNumber" class="form-error"></span>
+    </div>
+
+    <div class="form-row">
+        <input type="submit" value="Save" class="btn-modern" />
+    </div>
+</div>

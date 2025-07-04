@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+<div class="texto-vibe">
+    <div class="text-center mb-4">
+        <h2>💬 Get in Touch</h2>
+        <p class="text-muted">Have questions about our team, matches, or training sessions? We'd love to hear from you!</p>
+        <button type="button" class="btn-detalhes" data-bs-toggle="modal" data-bs-target="#contact-modal">
+            📩 [ Contact Us ]
+        </button>
+    </div>
+
+    <!-- Contact Information -->
+    <div class="row mt-5">
+        <div class="col-md-6 mb-4">
+            <div class="bg-light rounded p-4 shadow-sm h-100">
+                <h5 class="text-dark fw-bold mb-3">📍 Address</h5>
+                <p>One Microsoft Way<br>Redmond, WA 98052-6399</p>
+                <p><strong>Phone:</strong> (425) 555-0100</p>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="bg-light rounded p-4 shadow-sm h-100">
+                <h5 class="text-dark fw-bold mb-3">📧 Contact</h5>
+                <p><strong>Support:</strong> <a href="mailto:support@example.com">support@example.com</a></p>
+                <p><strong>Marketing:</strong> <a href="mailto:marketing@example.com">marketing@example.com</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact Modal -->
+<form action="/Home/SubmitQuery" method="post">
+    <div class="modal fade" id="contact-modal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content styled-form">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="contactModalLabel">Contact Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <label class="form-label">First Name</label>
+                        <input type="text" name="ime" class="form-input" placeholder="Your first name" />
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" name="prezime" class="form-input" placeholder="Your last name" />
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-input" placeholder="example@domain.com" />
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label">Message</label>
+                        <textarea name="poruka" class="form-input" rows="4" placeholder="Write your message..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label">Contact Type</label>
+                        <select name="tip" class="form-input">
+                            <option value="Pohvala">Compliment</option>
+                            <option value="Upit">Question</option>
+                            <option value="Poslovni prijedlog">Business Proposal</option>
+                            <option value="Žalba">Complaint</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="newsletter" value="true" id="newsletter">
+                            <label class="form-check-label" for="newsletter">Subscribe to newsletter</label>
+                            <input type="hidden" name="newsletter" value="false" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn-modern">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

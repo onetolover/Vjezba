@@ -1,0 +1,72 @@
+﻿<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@model List<Client>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<br /> <br />
+<div class="texto-vibe">
+    <h1>🏐 Player Directory</h1>
+</div>
+
+<div style="margin: 20px auto; max-width: 1000px;">
+    <partial name="_ClientFilter" model="new ClientFilterModel()" />
+</div>
+
+
+<div id="results">
+    <table class="modern-table">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>City</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.ID">@item.FullName</a>
+                    </td>
+                    <td>@item.Address</td>
+                    <td>@item.Email</td>
+                    <td>@item.City?.Name</td>
+                    <td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.ID">[edit]</a>
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#filterForm').on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'get',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        $('#results').html(data);
+                    },
+                    error: function () {
+                        alert("Greška pri dohvaćanju rezultata.");
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,60 @@
+﻿@model Vjezba.Model.Client
+
+@{
+	ViewData["Title"] = "Uređivanje klijenta";
+}
+
+<nav aria-label="breadcrumb">
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a asp-action="Index">Jogadoras</a></li>
+		<li class="breadcrumb-item active" aria-current="page">Editar jogadora</li>
+	</ol>
+</nav>
+
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Edit">
+			<input type="hidden" asp-for="ID" />
+			<partial name="_CreateOrEdit" />
+		</form>
+
+        <div class="text-center">
+            <a href="#" id="btnDelete" data-id="@Model.ID"
+               class="btn btn-danger w-100 py-2 mb-3"
+               style="max-width: 300px;">
+                🗑️ Delete
+            </a>
+        </div>
+
+
+
+	</div>
+</div>
+<br /><br /><br /><br />
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#btnDelete').click(function (e) {
+                e.preventDefault();
+
+                if (!confirm("Jeste li sigurni da želite obrisati klijenta?")) {
+                    return;
+                }
+
+                var id = $(this).data('id');
+
+                $.ajax({
+                    url: '/Client/Delete/' + id, // usa a action já existente
+                    type: 'POST',
+                    success: function () {
+                        window.location.href = '/Client/Index'; // redireciona para a lista
+                    },
+                    error: function () {
+                        alert("Greška prilikom brisanja klijenta.");
+                    }
+                });
+            });
+        });
+    </script>
+}

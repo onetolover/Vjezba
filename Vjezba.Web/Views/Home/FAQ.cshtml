@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "FAQ";
+    var selectedNumber = (int?)ViewData["selected"];
+}
+
+<div class="container py-5 faq-section">
+    <h2 class="mb-4 fw-bold">@ViewData["Title"]</h2>
+
+    <div class="list-group">
+        <div class="list-group-item @(selectedNumber == 1 ? "active-question" : "")">
+            <div class="question">Q: Ako je URL oblika <code>/Test/Cvijet</code>, koji je to Controller i koja akcija?</div>
+            <div class="answer">A: <code>TestController</code>, akcija <code>Cvijet</code>.</div>
+        </div>
+
+        <div class="list-group-item @(selectedNumber == 2 ? "active-question" : "")">
+            <div class="question">Q: Ako je URL oblika <code>/Test/Cvijet?lang=en</code>, kako izgleda parametar akcije ako je parametar opcionalni?</div>
+            <div class="answer">A: <code>Cvijet(string lang = null)</code></div>
+        </div>
+
+        <div class="list-group-item @(selectedNumber == 3 ? "active-question" : "")">
+            <div class="question">Q: Ako je URL oblika <code>/Test/Cvijet?lang=en&f=9</code>, kako izgleda akcija?</div>
+            <div class="answer">A: <code>Cvijet(string lang = null, int? f = null)</code></div>
+        </div>
+    </div>
+</div>
